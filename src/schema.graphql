@@ -1,0 +1,31 @@
+type Project{
+	id: ID
+	name: String
+	description: String
+	# ticket: [Ticket]
+}
+
+type Todo {
+	id: ID
+	name: String
+	# ticket: [Ticket]
+}
+type DeletedResourceResponse {
+	deletedId: ID
+	success: Boolean
+}
+
+type Query {
+	getProjectById(projectId: ID!): Project
+	getAllProjects: [Project]
+	getTodoById(todoId: ID!): Todo
+    getAllTodos: [Todo]
+}
+
+type Mutation {
+	createProject(name:String!, description: String): Project
+	createTodo(name: String!): Todo
+	updateProject(id: ID!, name: String!, description: String): Project
+	deleteProject(projectId: ID!): DeletedResourceResponse
+	deleteTodo(todoId: ID!): DeletedResourceResponse
+}
